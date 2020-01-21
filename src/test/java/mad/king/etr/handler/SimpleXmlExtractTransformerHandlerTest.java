@@ -19,11 +19,25 @@ public class SimpleXmlExtractTransformerHandlerTest {
 
         extractTransformerHandler =
                 ExtractTransformer.newSimpleXmlTransformer(new ExtractTransformMapper() {{
-                    getMap().put("fogground", 0);
-                    getMap().put("snowfall", 1);
-                    getMap().put("fastest2minwindspeed", 2);
-                    getMap().put("fogheavy", 3);
-                    getMap().put("hail", 4);
+                    getMap().put("transactionDate", 0);
+                    getMap().put("transactionTime", 1);
+                    getMap().put("tierCode", 2);
+                    getMap().put("mscAmount", 3);
+                    getMap().put("entityCode", 4);
+                    getMap().put("scheme", 5);
+                    getMap().put("cardType", 6);
+                    getMap().put("accountType", 7);
+                    getMap().put("cdtDesc", 8);
+                    getMap().put("cgt", 9);
+                    getMap().put("cgtDesc", 10);
+                    getMap().put("extMIDhimms", 11);
+                    getMap().put("merchantDBAtxt", 12);
+                    getMap().put("merchantCntryCode", 13);
+                    getMap().put("transactionAmount", 14);
+                    getMap().put("transactionCurrency", 15);
+                    getMap().put("escLong", 16);
+                    getMap().put("region", 17);
+                    getMap().put("subregion", 18);
                 }});
     }
 
@@ -36,11 +50,16 @@ public class SimpleXmlExtractTransformerHandlerTest {
 
             @Override
             public File getFile() {
-                return null;
+                return new File("data/tranhist.xml");
             }
 
             @Override
             public int getBatch() {
+                return 24;
+            }
+
+            @Override
+            public int hasHeader() {
                 return 0;
             }
 
@@ -50,18 +69,18 @@ public class SimpleXmlExtractTransformerHandlerTest {
             }
 
             @Override
-            public void commit() {
-
-            }
-
-            @Override
             public void readLine(String s) {
-
+                rows++;
             }
 
             @Override
             public void readBatch(String s) {
+                System.out.println(s);
+            }
 
+            @Override
+            public void commit() {
+                System.out.println("rows = " + rows);
             }
         });
 

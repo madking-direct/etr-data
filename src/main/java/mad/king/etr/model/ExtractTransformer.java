@@ -1,9 +1,6 @@
 package mad.king.etr.model;
 
-import mad.king.etr.handler.SimpleCsvExtractTransformerHandler;
-import mad.king.etr.handler.ExtractTransformMapper;
-import mad.king.etr.handler.ExtractTransformerHandler;
-import mad.king.etr.handler.SimpleJsonExtractTransformerHandler;
+import mad.king.etr.handler.*;
 
 import java.io.IOException;
 
@@ -20,7 +17,7 @@ public interface ExtractTransformer {
     }
 
     static ExtractTransformerHandler newSimpleXmlTransformer(ExtractTransformMapper extractTransformMapper) {
-        return new SimpleCsvExtractTransformerHandler(extractTransformMapper);
+        return new SimpleXmlExtractTransformerHandler(extractTransformMapper);
     }
 
     static ExtractTransformer newCustomTransformer(ExtractTransformerHandler extractTransformerHandler) {

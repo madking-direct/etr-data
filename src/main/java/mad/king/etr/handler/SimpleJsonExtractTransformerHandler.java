@@ -55,6 +55,7 @@ public class SimpleJsonExtractTransformerHandler extends ExtractTransformerHandl
                 e.printStackTrace();
             }
         });
+
         if (list.size() > 0) {
             String listValue = objectMapper
                     .writeValueAsString(list)

@@ -45,14 +45,15 @@ public class SimpleJsonExtractTransformerHandlerTest {
             }
 
             @Override
+            public int hasHeader() {
+                return 0;
+            }
+
+            @Override
             public void begin() {
 
             }
 
-            @Override
-            public void commit() {
-                System.out.printf("rows count = %s", rows);
-            }
 
             @Override
             public void readLine(String s) {
@@ -62,6 +63,11 @@ public class SimpleJsonExtractTransformerHandlerTest {
             @Override
             public void readBatch(String s) {
                 System.out.println(s);
+            }
+
+            @Override
+            public void commit() {
+                System.out.printf("rows count = %s", rows);
             }
         });
 

@@ -8,12 +8,14 @@ public interface ExtractTransformReader {
 
     int getBatch();
 
-    void begin();
+    int hasHeader();
 
-    void commit();
+    void begin();
 
     void readLine(String s);
 
     void readBatch(String s);
+
+    void commit();
 
 }

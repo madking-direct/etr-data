@@ -33,6 +33,11 @@ public class Main {
                         }
 
                         @Override
+                        public int hasHeader() {
+                            return 0;
+                        }
+
+                        @Override
                         public void begin() {
 
                         }
