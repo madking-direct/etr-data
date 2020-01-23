@@ -88,34 +88,21 @@ public class SimpleXmlExtractTransformerHandler extends ExtractTransformerHandle
                             break;
                         case "RequestList":
                             try {
-                                System.out.println(
-                                        objectMapper.writeValueAsString(list)
-                                                .replaceAll("\\[", "")
-                                                .replaceAll("]", "")
-                                                .replaceAll("\"", "")
-                                );
+                                dataTransformReader.readBatch(objectMapper.writeValueAsString(list)
+                                        .replaceAll("\\[", "")
+                                        .replaceAll("]", "")
+                                        .replaceAll("\"", ""));
                             } catch (JsonProcessingException e) {
                                 e.printStackTrace();
                             }
                             list.clear();
+                            dataTransformReader.commit();
                             break;
                         default:
+                            break;
                     }
                 }
             }
-
-            try {
-                System.out.println(
-                        objectMapper.writeValueAsString(list)
-                                .replaceAll("\\[", "")
-                                .replaceAll("]", "")
-                                .replaceAll("\"", "")
-                );
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-            list.clear();
-            dataTransformReader.commit();
 
         } catch (XMLStreamException e) {
             e.printStackTrace();
